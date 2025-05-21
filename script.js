@@ -17,6 +17,7 @@ async function fetchAllPokemons() {
   allPokemons = results;
   renderPokemonList(results);
 }
+//pa imgg//
 
 function renderPokemonList(pokemons) {
   pokemonListElement.innerHTML = "";
@@ -25,9 +26,13 @@ function renderPokemonList(pokemons) {
     const card = document.createElement("div");
     card.className = "col";
 
+    const id = pokemon.url.split("/").filter(part => part).pop();
+    const imageUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+
     card.innerHTML = `
       <div class="card h-100 shadow-sm pokemon-card">
-        <div class="card-body">
+        <img src="${imageUrl}" class="card-img-top" alt="Imagen de ${pokemon.name}">
+        <div class="card-body text-center">
           <h5 class="card-title text-capitalize">${pokemon.name}</h5>
           <button class="btn btn-danger btn-sm" onclick="viewDetails('${pokemon.url}', '${pokemon.name}')">Ver detalles</button>
         </div>
@@ -37,6 +42,7 @@ function renderPokemonList(pokemons) {
     pokemonListElement.appendChild(card);
   });
 }
+
 
 searchInput.addEventListener("input", () => {
   const query = searchInput.value.toLowerCase();
