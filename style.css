@@ -74,3 +74,8 @@ input[type="text"]:focus {
   background-color: #bf81e2;
 }
 
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+  transform: translateY(-20px);
+}
+
